@@ -21,13 +21,10 @@ def mulLine(line):
 def splitLine(baseline):
     splitLines = ["do()"+e for e in baseline.split("do()") if e]
     dos = []
-    donts = []
     for line in splitLines:
         if "don't()" in line:
             do = line.split("don't()")[0]
-            dont = line.split("don't")[1]
             dos.append(do)
-            donts.append(dont)
         else:
             dos.append(line)
 
