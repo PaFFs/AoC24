@@ -18,9 +18,22 @@ def mulLine(line):
         sum += int(mul[0]) * int(mul[1])
     return sum
 
-def splitLine(line):
-    splitLines = []
-    
-    return splitLines
+def splitLine(baseline):
+    splitLines = ["do()"+e for e in baseline.split("do()") if e]
+    dos = []
+    donts = []
+    for line in splitLines:
+        if "don't()" in line:
+            do = line.split("don't()")[0]
+            dont = line.split("don't")[1]
+            dos.append(do)
+            donts.append(dont)
+        else:
+            dos.append(line)
 
-print(mulLine(compLine))
+    return dos
+
+sums = 0
+for do in splitLine(compLine):
+    sums += mulLine(do)
+print(sums)
